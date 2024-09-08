@@ -12,12 +12,12 @@ npm --version
     
 ## Back-end setup 
 
-### 1. Setup .env
-    Connect your project to a mySQL database and fill in your MailTrap (or any other SMTP)
+### 1. Install dependencies
+    !composer install
 
-### 2. In the back end directory (InfoService-TZ/back/): 
-    !php artisan migrate 
-    !php artisan db:seed --class=StatusSeeder
+### 2. Setup .env
+    Renamle .env.example file to .env
+    Open the .env and fill in your MySQL database connection details and your MailTrap (or any other SMTP) details
 
 ### 3. In back/app/Models/User.php you need to set $frontendURL to your front-end url in the sendPasswordResetNotification function:
 
@@ -32,6 +32,11 @@ npm --version
         $this->notify(new ResetPasswordNotification($url));
     }
 
+### 4. In the back end directory (InfoService-TZ/back/) generate key, migrate, seed the statuses and start the server: 
+    !php artisan key:generate
+    !php artisan migrate 
+    !php artisan db:seed --class=StatusSeeder
+    !php artisan serve
 
 
 ## Front-end setup
@@ -48,6 +53,9 @@ npm --version
     }
     });
 
+### 3. Start the front-end server:
+    !npm run serve
+    (or alternatively): !npm run dev
 
 
 
