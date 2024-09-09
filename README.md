@@ -44,14 +44,8 @@ npm --version
 ### 1. In the front-end directory (InfoService-TZ/front/):
     !npm install
 
-### 2. In front/src/axios.js you need to set the baseURL variable to your back-end url in the axios.create function: 
-    const instance = axios.create({
-    baseURL: 'http://localhost:8000/api', // set your back-end url here
-    timeout: 10000,
-    headers: {
-        'Content-Type': 'application/json',
-    }
-    });
+### 2. In front/src/axios.js you need to set the backendURL variable to your back-end url: 
+    const backURL = 'http://localhost:8000'; //set your backend url here
 
 ### 3. Start the front-end server:
     !npm run serve

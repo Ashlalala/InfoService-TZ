@@ -1,7 +1,9 @@
 import axios from 'axios';
 
+const backURL = 'http://localhost:8000'; //set your backend url here
+
 const instance = axios.create({
-  baseURL: 'http://localhost:8000/api', // Write your back-end url here
+  baseURL: backURL+'/api',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
@@ -11,7 +13,7 @@ const instance = axios.create({
 // Function to fetch CSRF cookie
 async function fetchCsrfCookie() {
   try {
-    await axios.get('http://localhost:8000/sanctum/csrf-cookie', {
+    await axios.get(backURL+'/sanctum/csrf-cookie', {
       withCredentials: true, // Enable cookies for cross-site requests
     });
   } catch (error) {
